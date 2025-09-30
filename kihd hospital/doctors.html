@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctors - KIHD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+
+    /* Navbar */
+    header {
+      background: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    header img {
+      height: 50px;
+    }
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #ad2222;
+    }
+
+    /* Doctors Section */
+    main {
+      padding: 40px;
+    }
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    /* Doctor Card */
+    .doctor-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.774);
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .doctor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.63);
+    }
+
+    .doctor-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #7b0010;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+
+    .doctor-info h2 {
+      margin: 0;
+      font-size: 18px;
+      color: #1a1a1a;
+    }
+    .doctor-info p {
+      margin: 3px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Headings */
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <img src="logo pic edit.png" alt="KIHD Logo">
+    <nav>
+  <a href="index.html">Home</a>
+  <a href="index.html#about">About Us</a>
+  <a href="index.html#services">Services</a>
+  <a href="doctors.html" class="active">Doctors</a>
+  <a href="index.html#departments">Departments</a>
+  <a href="index.html#contact">Contact</a>
+</nav>
+  </header>
+
+  <!-- Administration Section -->
+  <main>
+    <h1>Meet Our Administration</h1>
+    <div class="doctors-grid">
+      <div class="doctor-card">
+        <img src="Dr.Riffatsutana.jpeg" alt="Dr. Riffat">
+        <div class="doctor-info">
+          <h2>Dr. Riffat</h2>
+          <p>Executive Director</p>
+          <p>Mon to Sat | 10:00AM to 02:00PM</p>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="Dr. Asif.png" alt="Dr. Asif">
+        <div class="doctor-info">
+          <h2>Dr. Asif</h2>
+          <p>Deputy Executive Director</p>
+          <p>Mon to Sat | 01:00PM to 03:00PM</p>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="Kabir Shaikh.jpg" alt="Mr. Muhammad Kabir">
+        <div class="doctor-info">
+          <h2>Mr. Muhammad Kabir</h2>
+          <p>Deputy Director (Admin)</p>
+          <p>Mon to Sat | 09:00AM to 02:00PM</p>
+        </div>
+      </div>
+    </div>
+     <br>
+     
+    <!-- Regular Faculty Section -->
+    <h1>Meet Our Regular Faculty Members</h1>
+    <br>
+    <div class="doctors-grid">
+      <div class="doctor-card">
+        <img src="M-Ishaq.jpg" alt="Prof. Muhammad Ishaq">
+        <div class="doctor-info">
+          <h2>Prof. Muhammad Ishaq</h2>
+          <p>Professor of Cardiology</p>
+          <p>Mon to Sat | 10:00AM to 02:00PM</p>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="Dr. Mansoor.jpg" alt="Prof. Mansoor Ahmed">
+        <div class="doctor-info">
+          <h2>Prof. Mansoor Ahmed</h2>
+          <p>Professor of Cardiology</p>
+          <p>Mon to Sat | 01:00PM to 03:00PM</p>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="Professor Dr. Abdul Rasheed.jpg" alt="Prof. Dr. Abdul Rasheed">
+        <div class="doctor-info">
+          <h2>Prof. Dr. Abdul Rasheed</h2>
+          <p>Sonologist</p>
+          <p>MBBS, DIP-Sonology</p>
+          <p>Mon to Sat | 09:00AM to 02:00PM</p>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="masih-uz-zaman.jpg" alt="Dr. Maseeh-Uzzama">
+        <div class="doctor-info">
+          <h2>Dr. Maseeh-Uzzama</h2>
+          <p>Hon. Head of Nuclear Cardiology Department</p>
+          <p>Mon to Sat | 10:00AM to 02:00PM</p>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="Tariq Ashraf.jpg" alt="Dr. Tariq Ashraf">
+        <div class="doctor-info">
+          <h2>Dr. Tariq Ashraf</h2>
+          <p>Cardiologist</p>
+          <p>Mon to Sat | 10:00AM to 02:00PM</p>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="Inam-Danish.jpg" alt="Dr. Inam Danish">
+        <div class="doctor-info">
+          <h2>Dr. Inam Danish</h2>
+          <p>Asst Prof. Cardiology</p>
+          <p>Mon to Sat | 10:00AM to 02:00PM</p>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="" alt="Dr. Shahid Ahmed">
+        <div class="doctor-info">
+          <h2>Dr. Shahid Ahmed</h2>
+          <p>Cardiologist</p>
+          <p>Mon to Sat | 10:00AM to 02:00PM</p>
+        </div>
+      </div>
+
+      <div class="doctor-card">
+        <img src="" alt="Dr. S.M Afaque">
+        <div class="doctor-info">
+          <h2>Dr. S.M Afaque</h2>
+          <p>Cardiologist</p>
+          <p>Mon to Sat | 10:00AM to 02:00PM</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

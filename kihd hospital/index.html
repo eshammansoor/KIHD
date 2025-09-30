@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>KIHD</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+       body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* default font */
+            background: #f4f4f9;
+            color: #222;
+        }
+        html {
+            scroll-behavior: smooth;
+        } 
+
+        /* Top Header */
+        .top-header {
+            background: white;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .top-logo {
+            height: 50px;
+            width: 100%;
+        }
+
+        .top-right .social-icon {
+            margin-left: 15px;
+            font-size: 20px;
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .top-right .social-icon:hover {
+            color: #a70536; /* matches navbar color */
+        }
+
+        /* Main Header */
+        header {
+            background: #a10a0a;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            gap: 20px;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        nav {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        nav a.active {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+
+        /* Language switcher */
+        .language-switch {
+            margin-left: 12px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .lang-btn {
+            background: white;
+            color: #a10a0a;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .lang-btn.active {
+            background: #ffcc00;
+            color: #000;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: cornflowerblue;
+            color: rgb(15, 15, 15);
+            padding: 0; /* Remove padding to fit the slideshow */
+            text-align: center;
+        }
+        .hero h2, .hero p {
+            display: none; /* Hide the old hero text */
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1200px;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .mySlides {
+            display: none;
+            position: relative;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        .slide-text {
+            color: #f2f2f2;
+            font-size: 30px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-weight: bold;
+        }
+
+        /* Sections */
+        .section {
+            padding: 40px 30px;
+            background: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .section h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #b81236;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #194074;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            max-width: 100%;
+            height: 150px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .card h3 {
+            margin: 10px 0;
+            color: #cecece;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #b61c43;
+            color: rgb(19, 18, 18);
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #a21f2a;
+        }
+
+        /* Forms */
+        .form-box {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: #131111;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        }
+        .form-box input,.form-box select {
+         width: 100%;
+         padding: 10px;
+         margin: 8px 0;
+         border: 1px solid #7c1616;
+         border-radius: 6px;
+        box-sizing: border-box; /* ensures padding doesn't break width */
+        }
+
+        
+        .form-box button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: ;
+            color: rgb(2, 1, 1);
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-box button:hover {
+            background: #a21f2a;
+        }
+
+        /* WhatsApp Icon */
+        .whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        /*map*/
+         .map-btn {
+         display: inline-block;
+         margin-top: 20px;
+         padding: 12px 25px;
+         background: #a70536;
+         color: #fff;
+         font-size: 1em;
+         border-radius: 6px;
+         text-decoration: none;
+         transition: background 0.3s;
+         font-weight: bold;
+        }
+
+        .map-btn:hover {
+        background: #ffcc00;
+        color: #a70536;
+        }
+        .map-section h2 {
+        color: red !important;  /* force red color */
+        margin-bottom: 20px;
+        text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: #a11e1e;
+            color: rgb(248, 243, 243);
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        /* Styles for the "Core Functions" section */
+        .core-functions {
+            padding: 40px 30px;
+            background: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .core-functions h2 {
+            margin-bottom: 25px;
+            color: #b81236;
+        }
+
+        .core-functions-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .function-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .function-icon {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+
+        .function-item h3 {
+            color: #a70536;
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .function-item p {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.5;
+        }
+        /* ===== Emergency Section ===== */
+    .emergency-section {
+      background: #a10a0a;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    .emergency-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .emergency-section .phone {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .emergency-section .phone a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .emergency-section .phone a:hover {
+      color: #ffcc00;
+    }
+    .emergency-section .phone i {
+      margin-right: 10px;
+      color: #ffcc00;
+    }
+    .emergency-section p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+        /* New Styles for the Video Section */
+        .video-section {
+            padding: 40px 30px;
+            background: #f0f0f5;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .video-section h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #a70536;
+        }
+        .video-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .video-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .video-item iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border-radius: 10px;
+        }
+        .video-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        .video-logo-container img {
+            width: 150px;
+            height: auto;
+        }
+        @media (min-width: 768px) {
+            .video-content {
+                flex-direction: row;
+                justify-content: center;
+            }
+            .video-item {
+                max-width: 50%;
+            }
+            .video-logo-container {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+        }
+        /* New Contact Section Styles */
+        .contact-section {
+            background: #8b98fd;
+            color: rgb(15, 14, 14);
+            padding: 60px 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: rgb(177, 18, 18);
+            margin-bottom: 25px;
+        }
+
+        .contact-top-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .info-item i {
+            font-size: 2em;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        .info-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .info-item p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        .contact-form-container {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .contact-form-container h3 {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .contact-form-container input,
+        .contact-form-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #555;
+            background: #111;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .contact-form-container textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form-container button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #b81c1c;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .contact-form-container button:hover {
+            background: #0e0d0d;
+        }
+
+        .social-media-icons {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-media-icons .social-icon {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-media-icons .social-icon:hover {
+            color: #161616;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-header">
+        <div class="top-left">
+            <img src="logo pic edit.png" alt="Hospital Logo" class="top-logo">
+        </div>
+        <div class="top-right">
+            <a href="https://facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-left">
+            <h1 class="lang" data-en="Karachi Institute of Heart Diseases" data-ur="کراچی انسٹیٹیوٹ آف ہارٹ ڈیزیز">Karachi Institute of Heart Diseases</h1>
+        </div>
+        <nav>
+            <a href="#home" class="lang" data-en="Home" data-ur="ہوم">Home</a>
+            <a href="#about" class="lang" data-en="About Us" data-ur="ہمارے بارے میں">About Us</a>
+            <a href="#services" class="lang" data-en="Services" data-ur="سروسز">Services</a>
+            <a href="doctors.html" class="lang" data-en="Doctors" data-ur="ڈاکٹرز">Doctors</a>
+            <a href="#departments" class="lang" data-en="Departments" data-ur="شعبہ جات">Departments</a>
+            <a href="#contact" class="lang" data-en="Contact" data-ur="رابطہ کریں">Contact</a>
+        </nav>
+
+        <div class="language-switch" aria-label="Language switcher">
+            <button id="btn-en" class="lang-btn active" onclick="switchLang('en')">English</button>
+            <button id="btn-ur" class="lang-btn" onclick="switchLang('ur')">اردو</button>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <img src="bg1.jpg" style="width:100%">
+                <div class="slide-text">
+                    <span class="lang" data-en="KARACHI INSTITUTE OF HEART DISEASES" data-ur="کراچی انسٹیٹیوٹ آف ہارٹ ڈیزیز">KARACHI INSTITUTE OF HEART DISEASES</span>
+                </div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="doctor pic.avif" style="width: 100%">
+                <div class="slide-text">
+                    <span class="lang" data-en="WELCOME TO OUR WEBSITE" data-ur="ہماری ویب سائٹ میں خوش آمدید">WELCOME TO OUR WEBSITE</span>
+                </div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="slide pic.jpeg" style="width:100%">
+                <div class="slide-text">
+                    <span class="lang" data-en="PROVIDING WORLD-CLASS CARE" data-ur="عالمی معیار کی دیکھ بھال فراہم کرنا">PROVIDING WORLD-CLASS CARE</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="lang" data-en="About KIHD" data-ur="کے آئی ایچ ڈی کے بارے میں"><u><b>About KIHD</b></u></h2>
+        <p class="lang" data-en="Karachi Institute of Heart Diseases (KIHD) is one of the main tertiary care teaching hospitals of Pakistan. It is located in the center of Karachi and started functioning on June 3, 2005. The institute provides modern treatment, research, prevention and training for medical students and nurses at undergraduate and postgraduate levels. KIHD is a 170-bed teaching hospital with Emergency Room, CCU, Medical & Surgical Wards, ICU, Cardiac Catheterization Labs, Operating Theaters, ECHO, ETT, Nuclear Imaging, Rehabilitation Center, Research Department and Laboratory services."
+           data-ur="کراچی انسٹیٹیوٹ آف ہارٹ ڈیزیز (کے آئی ایچ ڈی) پاکستان کے اہم ٹیرشیری کیئر ٹیچنگ اسپتالوں میں سے ایک ہے۔ یہ کراچی کے مرکز میں واقع ہے اور 3 جون 2005 کو کام شروع کیا۔ ادارہ جدید علاج، تحقیق، روک تھام اور میڈیکل طلباء اور نرسوں کی انڈر گریجویٹ اور پوسٹ گریجویٹ سطح پر تربیت فراہم کرتا ہے۔ کے آئی ایچ ڈی 170 بستر کا ٹیچنگ اسپتال ہے جس میں ایمرجنسی روم، سی سی یو، میڈیکل اور سرجیکل وارڈز، آئی سی یو، کارڈیک کیتھیٹرائزیشن لیبز، آپریٹنگ تھیٹرز، ایکو، ای ٹی ٹی، نیوکلئیر امیجنگ، بحالی مرکز، تحقیقاتی ڈیپارٹمنٹ اور لیبارٹری سروسز موجود ہیں۔">
+            Karachi Institute of Heart Diseases (KIHD) is one of the main tertiary care teaching hospitals of Pakistan. It is located in the center of Karachi and started functioning on June 3, 2005. The institute provides modern treatment, research, prevention and training for medical students and nurses at undergraduate and postgraduate levels. KIHD is a 170-bed teaching hospital with Emergency Room, CCU, Medical & Surgical Wards, ICU, Cardiac Catheterization Labs, Operating Theaters, ECHO, ETT, Nuclear Imaging, Rehabilitation Center, Research Department and Laboratory services.
+        </p>
+    </section>
+
+    <section id="services" class="section">
+        <h2 class="lang" data-en="Our Services" data-ur="ہماری خدمات"><u><b>Our Services</b></u></h2>
+        <div class="cards">
+            <div class="card">
+                <img src="serviceeeee.jpg" alt="">
+                <h3 class="lang" data-en="Education - Training" data-ur="تعلیم - تربیت">Education - Training</h3>
+            </div>
+            <div class="card">
+                <img src="service2.avif" alt="">
+                <h3 class="lang" data-en="Workshop and Symposium" data-ur="ورکشاپ اور سیمپوزیم">Workshop and Symposium</h3>
+            </div>
+            <div class="card">
+                <img src="service3.avif" alt="">
+                <h3 class="lang" data-en="Emergency" data-ur="ایمرجنسی">Emergency</h3>
+            </div>
+            <div class="card">
+                <img src="service3.jpg" alt="">
+                <h3 class="lang" data-en="Cardiovascular" data-ur="قلبی و شریانی">Cardiovascular</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="departments" class="section">
+        <h2 class="lang" data-en="Our Departments" data-ur="ہمارے شعبہ جات"><u><b>Our Departments</b></u></h2>
+        <div class="cards">
+            <div class="card"><img src="department1.jpg" alt=""><h3 class="lang" data-en="Nuclear Cardiology" data-ur="نیوکلئیر کارڈیالوجی">Nuclear Cardiology</h3></div>
+            <div class="card"><img src="department2.jpg" alt=""><h3 class="lang" data-en="Anesthesiology" data-ur="انیستھیزیولوجی">Anesthesiology</h3></div>
+            <div class="card"><img src="department3.jpg" alt=""><h3 class="lang" data-en="Cardiology Surgery" data-ur="کارڈیالوجی سرجری">Cardiology Surgery</h3></div>
+            <div class="card"><img src="department4.jpg" alt=""><h3 class="lang" data-en="Epidemiology & Research" data-ur="وبائیات اور تحقیق">Epidemiology & Research</h3></div>
+            <div class="card"><img src="department5.jpg" alt=""><h3 class="lang" data-en="Clinical Cardiology" data-ur="کلینیکل کارڈیالوجی">Clinical Cardiology</h3></div>
+            <div class="card"><img src="department6.jpg" alt=""><h3 class="lang" data-en="Non-Invasive Cardiology" data-ur="غیر جارحانہ کارڈیالوجی">Non-Invasive Cardiology</h3></div>
+            <div class="card"><img src="department7.jpg" alt=""><h3 class="lang" data-en="Cardiovascular Surgery" data-ur="قلبی و شریانی سرجری">Cardiovascular Surgery</h3></div>
+            <div class="card"><img src="department8.jpg" alt=""><h3 class="lang" data-en="Interventional Cardiology" data-ur="انٹرونشنل کارڈیالوجی">Interventional Cardiology</h3></div>
+        </div>
+    </section>
+        <section id="gallery" class="section">
+        <h2 class="lang" data-en="Photo Gallery" data-ur="فوٹو گیلری"><u><b>Photo Gallery</b></u></h2>
+        <p style="text-align:center; margin-bottom:20px;" class="lang"
+           data-en="Images of hospital facilities, wards, labs, and events"
+           data-ur="ہسپتال کی سہولیات، وارڈز، لیبز اور تقریبات کی تصاویر">
+           Images of hospital facilities, wards, labs, and events
+        </p>
+        <div class="cards">
+            <div class="card">
+                <img src="wards.jpg "width=390px alt="Hospital Ward">
+                <h3 class="lang" data-en="Ward" data-ur="وارڈ">Ward</h3>
+            </div>
+            <div class="card">
+                <img src="labs.jpg" width="390px" alt="Hospital Lab">
+                <h3 class="lang" data-en="Lab" data-ur="لیب">Lab</h3>
+            </div>
+
+        </div>
+    </section>
+
+    
+    <section class="core-functions">
+        <h2 class="lang" data-en="Core Functions" data-ur="مرکزی افعال"><u><b>Core Functions</b></u></h2>
+        <div class="core-functions-container">
+            <div class="function-item">
+                <img src="logo1.jpg" alt="Clinic Schedule Icon" class="function-icon">
+                <h3 class="lang" data-en="Clinic Schedule" data-ur="کلینک شیڈول">Clinic Schedule</h3>
+                <p class="lang" data-en="KIHD provides emergency, laboratory, inpatient and outpatient services." data-ur="کے آئی ایچ ڈی ایمرجنسی، لیبارٹری، اندرونی مریض اور بیرونی مریض کی خدمات فراہم کرتا ہے۔">KIHD provides emergency, laboratory, inpatient and outpatient services.</p>
+            </div>
+            <div class="function-item">
+                <img src="logo2.jpg" alt="Blood Bank Icon" class="function-icon">
+                <h3 class="lang" data-en="Blood Bank" data-ur="بلڈ بینک">Blood Bank</h3>
+                <p class="lang" data-en="The blood bank collects, tests and stores blood for medical procedures." data-ur="بلڈ بینک خون جمع، ٹیسٹ اور محفوظ کرتا ہے تاکہ میڈیکل طریقہ کار میں استعمال ہو سکے۔">The blood bank collects, tests and stores blood for medical procedures.</p>
+            </div>
+            <div class="function-item">
+                <img src="logo4.jpg" alt="KIHD Laboratory Icon" class="function-icon">
+                <h3 class="lang" data-en="KIHD Laboratory" data-ur="کے آئی ایچ ڈی لیبارٹری">KIHD Laboratory</h3>
+                <p class="lang" data-en="A fully automated lab operating under qualified staff and consultant pathologists." data-ur="مکمل طور پر خود کار لیبارٹری جو ماہر عملہ اور کنسلٹنٹ پیتھالوجسٹ کے تحت کام کرتی ہے۔">A fully automated lab operating under qualified staff and consultant pathologists.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Section -->
+  <section class="emergency-section">
+    <h2 class="lang" data-en="Emergency Medical Care 24/7" data-ur="ایمرجنسی میڈیکل کیئر 24/7">Emergency Medical Care 24/7</h2>
+    <div class="phone">
+      <a href="tel:111123749"><i class="fas fa-phone-alt"></i> <span class="lang" data-en="111 123 749" data-ur="111 123 749">111 123 749</span></a>
+    </div>
+    <p class="lang" data-en="Heart hospital emergencies require immediate, life-saving interventions from specialized medical professionals and advanced equipment to ensure the best possible outcomes for patients."
+       data-ur="دل کے ہسپتال کی ایمرجنسیز فوری اور جان بچانے والی مداخلتیں مانگتی ہیں، جو ماہر طبی عملہ اور جدید سازوسامان کے ذریعے ممکن ہوتی ہیں تاکہ مریضوں کے لیے بہترین نتائج یقینی بنائے جائیں۔">
+      Heart hospital emergencies require immediate, life-saving interventions from specialized medical professionals and advanced equipment to ensure the best possible outcomes for patients.
+    </p>
+  </section>
+
+    <section class="video-section">
+    <h2 class="lang" data-en="Watch Our Videos" data-ur="ہمارے ویڈیوز دیکھیں"><u><b>Watch Our Videos</b></u></h2>
+    <div class="video-content">
+        <div class="video-logo-container">
+            <img src="logo pic edit.png" alt="Hospital Logo">
+        </div>
+        <div class="video-item">
+            <iframe width="783" height="443" src="https://www.youtube.com/embed/OP9lbZ8DqAU" title="Administrator of Karachi Barrister Murtaza Wahab inaugurated NICVD CPU at KIHD" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p class="lang" data-en="Administrator inaugurated NICVD CPU at KIHD" data-ur="ایڈمنسٹریٹر نے کے آئی ایچ ڈی میں این آئی سی وی ڈی سی پی یو کا افتتاح کیا">Administrator inaugurated NICVD CPU at KIHD</p>
+        </div>
+        <div class="video-item">
+            <iframe width="783" height="440" src="https://www.youtube.com/embed/HL7gU_gDMms" title="Karachi Institute Of Heart Disease (K.I.H.D) From Inside. Short Tour." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p class="lang" data-en="Karachi Institute Of Heart Disease (KIHD) — Facility Tour" data-ur="کراچی انسٹیٹیوٹ آف ہارٹ ڈیزیز (کے آئی ایچ ڈی) — ادارے کا دورہ">Karachi Institute Of Heart Disease (KIHD) — Facility Tour</p>
+        </div>
+    </div>
+</section>
+    
+    <section id="contact" class="contact-section">
+        <h2 class="lang" data-en="Contact Us" data-ur="ہم سے رابطہ کریں"><u><b>Contact Us</b></u></h2>
+        <div class="contact-top-container">
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3 class="lang" data-en="Call Us" data-ur="ہمیں کال کریں">Call Us</h3>
+                        <p class="lang" data-en="021-111-123-749" data-ur="021-111-123-749">021-111-123-749</p>
+                        <p class="lang" data-en="021-99330011-15" data-ur="021-99330011-15">021-99330011-15</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3 class="lang" data-en="Address" data-ur="پتہ">Address</h3>
+                        <p class="lang" data-en="ST-15, Block-16, Near UBL Sports Complex, Federal B. Area, Karachi-75950, Sindh, Pakistan" data-ur="ST-15, بلاک-16، یو بی ایل اسپورٹس کمپلیکس کے قریب، فیڈرل بی ایریا، کراچی-75950، سندھ، پاکستان">
+                          ST-15, Block-16, Near UBL Sports Complex, Federal B. Area, Karachi-75950, Sindh, Pakistan
+                        </p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3 class="lang" data-en="Email" data-ur="ای میل">Email</h3>
+                        <p class="lang" data-en="info@khihd.edu.pk" data-ur="info@khihd.edu.pk">info@khihd.edu.pk</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-container">
+                <h3 class="lang" data-en="Contact Us" data-ur="ہم سے رابطہ کریں">Contact Us</h3>
+                <form action="#" method="post" onsubmit="alertLangSubmit(event)">
+                    <input type="email" id="contactEmail" class="lang-input" data-en-placeholder="Enter Email" data-ur-placeholder="ای میل درج کریں" placeholder="Enter Email" required>
+                    <textarea id="contactMessage" class="lang-input" data-en-placeholder="Enter Message" data-ur-placeholder="پیغام درج کریں" placeholder="Enter Message" required></textarea>
+                    <button type="submit" class="lang" data-en="Send Message" data-ur="پیغام بھیجیں">Send Message</button>
+                </form>
+            </div>
+        </div>
+        <div class="social-media-icons">
+            <a href="https://facebook.com" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://youtube.com" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/923001234567" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </section>
+
+         <!-- Google Map Section -->
+<section class="map-section section">
+    <h2 class="lang" data-en="Find Us on Map" data-ur="نقشے پر ہمیں تلاش کریں"><u><b>Find Us on Map</b></u></h2>
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps?q=ST-15,+Block-16,+Near+UBL+Sports+Complex,+Federal+B.+Area,+Karachi-75950,+Sindh,+Pakistan&output=embed" 
+            width="100%" 
+            height="400" 
+            style="border:0; border-radius:10px;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=ST-15,+Block-16,+Near+UBL+Sports+Complex,+Federal+B.+Area,+Karachi-75950,+Sindh,+Pakistan" 
+       target="_blank" 
+       class="map-btn lang" data-en="📍 Get Directions" data-ur="📍 راستہ حاصل کریں">📍 Get Directions</a>
+</section>
+
+
+    <footer>
+        <p class="lang" data-en="&copy; 2025 Hospital Website | All Rights Reserved" data-ur="© 2025 ہسپتال ویب سائٹ | تمام حقوق محفوظ ہیں">&copy; 2025 Hospital Website | All Rights Reserved</p>
+    </footer>
+
+    <a href="https://wa.me/1234567890" class="whatsapp" target="_blank" aria-label="WhatsApp">💬</a>
+
+    <script>
+        // keep track of current language
+        let currentLang = 'en';
+
+        // set initial placeholders etc on load
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(currentLang);
+            // ensure EN button active at load
+            document.getElementById('btn-en').classList.add('active');
+        });
+
+        // language switcher function
+        function switchLang(lang) {
+            if (lang === currentLang) return; // no-op
+            currentLang = lang;
+            applyLanguage(lang);
+
+            // toggle active class on buttons
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-ur').classList.toggle('active', lang === 'ur');
+        }
+
+        function applyLanguage(lang) {
+            // change text content for all .lang elements
+            const elems = document.querySelectorAll('.lang');
+            elems.forEach(el => {
+                const en = el.getAttribute('data-en');
+                const ur = el.getAttribute('data-ur');
+                if (en === null && ur === null) return; // ignore if not translatable
+                el.textContent = (lang === 'ur') ? (ur || en) : (en || ur);
+            });
+
+            // change placeholders for inputs with data-en-placeholder / data-ur-placeholder
+            const inputs = document.querySelectorAll('.lang-input');
+            inputs.forEach(inp => {
+                const enph = inp.getAttribute('data-en-placeholder');
+                const urph = inp.getAttribute('data-ur-placeholder');
+                if (lang === 'ur' && urph) inp.placeholder = urph;
+                else if (lang === 'en' && enph) inp.placeholder = enph;
+            });
+
+            // change text inside <option> elements that have data-en/data-ur
+            const options = document.querySelectorAll('select option');
+            options.forEach(opt => {
+                const en = opt.getAttribute('data-en');
+                const ur = opt.getAttribute('data-ur');
+                if (en === null && ur === null) return;
+                opt.textContent = (lang === 'ur') ? (ur || en) : (en || ur);
+            });
+
+            // set dir and font for Urdu
+            if (lang === 'ur') {
+                document.documentElement.setAttribute('lang', 'ur');
+                document.body.setAttribute('dir', 'rtl');
+                document.body.style.fontFamily = "'Noto Nastaliq Urdu', serif";
+                // small layout tweak for rtl - you can expand as needed
+            } else {
+                document.documentElement.setAttribute('lang', 'en');
+                document.body.setAttribute('dir', 'ltr');
+                document.body.style.fontFamily = "'Poppins', sans-serif";
+            }
+        }
+       
+        
+
+
+        // Simple localized submit alert for contact form (demo)
+        function alertLangSubmit(e) {
+            e.preventDefault();
+            const msg = messages[currentLang].contact_sent;
+            const el = document.getElementById('reportResult'); // reuse an element or show custom message
+            // We'll show a small alert and then clear inputs
+            alert(msg);
+            document.getElementById('contactEmail').value = '';
+            document.getElementById('contactMessage').value = '';
+        }
+
+        // Highlight active navbar link
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll("nav a");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === "#" + current) {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+        // Slideshow
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000);
+        }
+    </script>
+
+</body>
+</html>
